@@ -1,10 +1,31 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import ReactDOM from "react-dom/client";
+import {BrowserRouter, Route, Routes, Link} from "react-router-dom";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+import Home from "./pages/Home";
+import About from "./pages/About";
+
+function App() {
+    return (
+        <BrowserRouter>
+            <header>
+                <Link to="/">#VANLIFE</Link>
+                <nav>
+                    <Link to="/about">About</Link>
+                </nav>
+            </header>
+
+
+            <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="/about" element={<About />} />
+            </Routes>
+        </BrowserRouter>
+    )
+}
+
+
+const root: HTMLElement = document.getElementById('root')!
+
+ReactDOM.createRoot(root).render(
     <App />
-  </StrictMode>,
-)
+);
